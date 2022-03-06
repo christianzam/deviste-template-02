@@ -70,15 +70,15 @@ file 'app/views/shared/_navbar.html.erb', <<~HTML
       <ul class=" navbar-nav ms-auto mb-2 mb-lg-0">
         <% if current_user%>
         <li class="nav-item">
-          <%= link_to current_user.email, edit_password_path, class: 'nav-link' %>
+          <%= link_to current_user.email, edit_user_password_path, class: 'nav-link' %>
         </li>
-        <%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-outline-secondary' %>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
         <% else %>
           <li class="nav-item">
-            <%= link_to 'Sign Up', sign_up_path, class: 'nav-link' %>
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log In', sign_in_path, class: 'nav-link' %>
+            <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>
