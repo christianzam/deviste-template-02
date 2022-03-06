@@ -138,9 +138,9 @@ after_bundle do
 
   # Devise install + user
   ########################################
-  rails_command 'rails generate devise:install'
+  rails_command 'generate devise:install'
 
-  rails_command 'rails generate devise User'
+  rails_command 'generate devise User'
 
   # App controller
   ########################################
@@ -155,7 +155,7 @@ after_bundle do
   ########################################
   rails_command 'db:migrate'
 
-  rails_command 'rails generate devise:views'
+  rails_command 'generate devise:views'
 
   # Pages Controller
   ########################################
