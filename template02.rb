@@ -53,7 +53,7 @@ HTML
 file 'app/views/shared/_navbar.html.erb', <<~HTML
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to "Navbar", root_path, class: "navbar-brand" %>
+    <%= link_to "Home", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -89,9 +89,11 @@ HTML
 
 inject_into_file 'app/views/layouts/application.html.erb', after: '<body>' do
   <<-HTML
-
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flash' %>
+  <%= render 'shared/navbar' %>
+  <div class="container">
+    <%= render partial: 'shared/flash' %>
+    <%= yield %>
+  </div>
   HTML
 end
 
