@@ -68,9 +68,9 @@ file 'app/views/shared/_navbar.html.erb', <<~HTML
         </li>
       </ul>
       <ul class=" navbar-nav ms-auto mb-2 mb-lg-0">
-        <% if Current.user%>
+        <% if current_user%>
         <li class="nav-item">
-          <%= link_to Current.user.email, edit_password_path, class: 'nav-link' %>
+          <%= link_to current_user.email, edit_password_path, class: 'nav-link' %>
         </li>
         <%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-outline-secondary' %>
         <% else %>
@@ -138,8 +138,9 @@ after_bundle do
 
   # Devise install + user
   ########################################
-  generate('devise:install')
-  generate('devise', 'User')
+  rails_command 'rails generate devise:install'
+
+  rails_command 'rails generate devise User'
 
   # App controller
   ########################################
@@ -153,7 +154,8 @@ after_bundle do
   # migrate + devise views
   ########################################
   rails_command 'db:migrate'
-  generate('devise:views')
+
+  rails_command 'rails generate devise:views'
 
   # Pages Controller
   ########################################
@@ -210,4 +212,8 @@ after_bundle do
 
   # Fix puma config
   gsub_file('config/puma.rb', 'pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }', '# pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }')
+
+  # LAST MIGRATION
+  ########################################
+  rails_command 'db:drop db:create db:migrate'
 end
