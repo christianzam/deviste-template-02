@@ -106,6 +106,11 @@ generators = <<~RUBY
 RUBY
 
 environment generators
+########################################
+# run bundle install
+########################################
+
+run 'bundle install'
 
 ########################################
 # AFTER BUNDLE
