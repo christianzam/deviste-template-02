@@ -63,7 +63,7 @@ file 'app/views/shared/_navbar.html.erb', <<~HTML
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "About", about_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link" %>
           <%# <a class="nav-link" href="/about">About US</a> THIS IS ANOTHER WAY BUT WRONG FOR RAILS%>
         </li>
       </ul>
@@ -91,7 +91,7 @@ inject_into_file 'app/views/layouts/application.html.erb', after: '<body>' do
   <<-HTML
 
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    <%= render 'shared/flash' %>
   HTML
 end
 
